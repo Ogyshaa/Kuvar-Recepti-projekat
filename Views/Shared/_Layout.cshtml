@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Kuvar</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(180deg, #fff8f2 0%, #f7efe4 100%);
+            color: #2a2119;
+        }
+
+        .topbar {
+            background: #2f241d;
+            color: white;
+            padding: 14px 0;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+        }
+
+        .wrap {
+            width: min(1100px, 92%);
+            margin: 0 auto;
+        }
+
+        .nav-shell {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .brand {
+            font-size: 24px;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .nav-links, .nav-user {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a, .nav-user a, .nav-user span {
+            color: white;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 999px;
+        }
+
+        .nav-links a:hover, .nav-user a:hover {
+            background: rgba(255,255,255,0.12);
+        }
+
+        .nav-user span {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .page {
+            padding: 30px 0 50px;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.92);
+            border-radius: 22px;
+            padding: 22px;
+            box-shadow: 0 18px 45px rgba(65,42,22,0.12);
+            margin-bottom: 18px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 16px;
+            border-radius: 999px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary { background: #d86f3d; color: white; }
+        .btn-danger { background: #d9534f; color: white; }
+        .btn-warning { background: #f0ad4e; color: white; }
+        .btn-secondary { background: #2f241d; color: white; }
+        .btn-light { background: #f5ece2; color: #2f241d; }
+
+        .field-validation-error, .validation-summary-errors {
+            color: #b42318;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 12px 14px;
+            border-radius: 14px;
+            border: 1px solid #d7c3b0;
+            margin-top: 6px;
+            box-sizing: border-box;
+        }
+
+        label {
+            font-weight: 600;
+            display: block;
+            margin-top: 12px;
+        }
+
+        .footer {
+            border-top: 1px solid #e5d7c8;
+            padding: 20px 0 35px;
+            color: #705c4b;
+        }
+
+        .alert-success {
+            background: #e7f8ef;
+            color: #0f5132;
+            border-radius: 16px;
+            padding: 12px 16px;
+            margin-bottom: 16px;
+        }
+    </style>
+</head>
+<body>
+    <header class="topbar">
+        <div class="wrap nav-shell">
+            @Html.ActionLink("Kuvar", "Index", "Recept", null, new { @class = "brand" })
+
+            <nav class="nav-links">
+                @Html.ActionLink("Recepti", "Index", "Recept")
+                @if (Session["user"] != null)
+                {
+                    @Html.ActionLink("Dodaj recept", "Create", "Recept")
+                    @Html.ActionLink("Omiljeni", "Favorites", "Recept")
+                    @Html.ActionLink("Profil", "Index", "Profile")
+                    if (Session["isAdmin"] != null && (bool)Session["isAdmin"])
+                    {
+                        @Html.ActionLink("Admin", "Panel", "Admin")
+                    }
+                }
+            </nav>
+
+            <div class="nav-user">
+                @if (Session["user"] == null)
+                {
+                    @Html.ActionLink("Prijava", "Login", "Autentikacija")
+                    @Html.ActionLink("Registracija", "Register", "Autentikacija")
+                }
+                else
+                {
+                    <span>@Session["user"]</span>
+                    @Html.ActionLink("Odjava", "Logout", "Autentikacija")
+                }
+            </div>
+        </div>
+    </header>
+
+    <main class="page">
+        <div class="wrap">
+            @if (TempData["Success"] != null)
+            {
+                <div class="alert-success">@TempData["Success"]</div>
+            }
+
+            @RenderBody()
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="wrap">
+            <p>&copy; @DateTime.Now.Year - Kuvar MVC aplikacija za recepte</p>
+        </div>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryval")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

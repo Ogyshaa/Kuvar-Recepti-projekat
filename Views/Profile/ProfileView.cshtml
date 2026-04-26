@@ -1,0 +1,34 @@
+@model Kuvar.Models.ProfilePregledRecepta
+@{
+    ViewBag.Title = "Profil";
+}
+
+<div class="card">
+    <h2>Moj profil</h2>
+    <h3>@Model.PrijavljeniKorisnik.KorIme</h3>
+    <p><strong>Email:</strong> @Model.PrijavljeniKorisnik.Email</p>
+    <p><strong>Datum rodjenja:</strong> @Model.PrijavljeniKorisnik.DatumRodjenja.ToShortDateString()</p>
+    <a class="btn btn-secondary" href="@Url.Action("Edit", "Profile")">Izmeni profil</a>
+</div>
+
+<div class="card">
+    <h3>Moji recepti</h3>
+    @if (!Model.ObjavljeniRecipti.Any())
+    {
+        <p>Korisnik jos nije objavio nijedan recept.</p>
+    }
+
+    @foreach (var r in Model.ObjavljeniRecipti)
+    {
+        <div style="padding:12px 0;border-bottom:1px solid #eee;display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;">
+            <div>
+                <strong>@r.Naziv</strong> - @r.Kategorija
+            </div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;">
+                <a class="btn btn-primary" href="@Url.Action("Details", "Recept", new { id = r.Id })">Detalji</a>
+                <a class="btn btn-secondary" href="@Url.Action("Edit", "Recept", new { id = r.Id })">Izmeni</a>
+                <a class="btn btn-danger" href="@Url.Action("Delete", "Recept", new { id = r.Id })" onclick="return confirm('Obrisi ovaj recept?');">Obrisi</a>
+            </div>
+        </div>
+    }
+</div>

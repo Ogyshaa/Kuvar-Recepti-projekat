@@ -1,0 +1,25 @@
+@model List<Kuvar.Models.Recept>
+@{
+    ViewBag.Title = "Omiljeni recepti";
+}
+
+<div class="card">
+    <h2>Omiljeni recepti</h2>
+    <p>Lista recepata koje je korisnik oznacio kao omiljene.</p>
+</div>
+
+@if (!Model.Any())
+{
+    <div class="card">
+        <p>Jos uvek nemas omiljene recepte.</p>
+    </div>
+}
+
+@foreach (var r in Model)
+{
+    <div class="card">
+        <h3>@r.Naziv</h3>
+        <p>@r.Kategorija</p>
+        <a class="btn btn-primary" href="@Url.Action("Details", "Recept", new { id = r.Id })">Detalji</a>
+    </div>
+}

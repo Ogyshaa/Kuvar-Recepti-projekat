@@ -1,0 +1,47 @@
+@model Kuvar.Models.Recept
+@{
+    ViewBag.Title = "Izmena recepta";
+}
+
+<div class="card">
+    <h2>Izmeni recept</h2>
+
+    @using (Html.BeginForm("Edit", "Recept", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.Id)
+        @Html.HiddenFor(m => m.Slika)
+        @Html.ValidationSummary(true, "", new { @class = "validation-summary-errors" })
+
+        @Html.LabelFor(m => m.Naziv)
+        @Html.TextBoxFor(m => m.Naziv)
+        @Html.ValidationMessageFor(m => m.Naziv)
+
+        @Html.LabelFor(m => m.Kategorija)
+        @Html.TextBoxFor(m => m.Kategorija)
+        @Html.ValidationMessageFor(m => m.Kategorija)
+
+        @Html.LabelFor(m => m.Sastojci)
+        @Html.TextAreaFor(m => m.Sastojci, new { rows = 6 })
+        @Html.ValidationMessageFor(m => m.Sastojci)
+
+        @Html.LabelFor(m => m.Uputstva)
+        @Html.TextAreaFor(m => m.Uputstva, new { rows = 6 })
+        @Html.ValidationMessageFor(m => m.Uputstva)
+
+        if (!string.IsNullOrWhiteSpace(Model.Slika))
+        {
+            <div style="margin-top:12px;">
+                <p>Trenutna slika:</p>
+                <img src="@Url.Content(Model.Slika)" alt="@Model.Naziv" style="max-width:220px;border-radius:14px;" />
+            </div>
+        }
+
+        <label for="slikaFajl">Nova slika sa racunara</label>
+        <input type="file" name="slikaFajl" id="slikaFajl" accept=".jpg,.jpeg,.png,.gif,.webp" />
+
+        <div style="margin-top:18px;">
+            <button class="btn btn-secondary" type="submit">Sacuvaj izmene</button>
+        </div>
+    }
+</div>

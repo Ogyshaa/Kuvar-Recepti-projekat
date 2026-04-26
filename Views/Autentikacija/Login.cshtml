@@ -1,0 +1,32 @@
+@model Kuvar.Models.LoginViewModel
+@{
+    ViewBag.Title = "Prijava";
+}
+
+<div class="card" style="max-width:520px;margin:0 auto;">
+    <h2>Prijava</h2>
+    <p>Prijavi se da bi upravljao receptima i omiljenim objavama.</p>
+
+    @if (ViewBag.Error != null)
+    {
+        <div class="validation-summary-errors">@ViewBag.Error</div>
+    }
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "validation-summary-errors" })
+
+        @Html.LabelFor(m => m.KorIme)
+        @Html.TextBoxFor(m => m.KorIme)
+        @Html.ValidationMessageFor(m => m.KorIme)
+
+        @Html.LabelFor(m => m.Lozinka)
+        @Html.PasswordFor(m => m.Lozinka)
+        @Html.ValidationMessageFor(m => m.Lozinka)
+
+        <div style="margin-top:18px;">
+            <button class="btn btn-secondary" type="submit">Prijava</button>
+        </div>
+    }
+</div>

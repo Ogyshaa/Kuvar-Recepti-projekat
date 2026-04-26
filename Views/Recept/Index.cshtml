@@ -1,0 +1,71 @@
+@model Kuvar.Models.ReceptIndexViewModel
+@{
+    ViewBag.Title = "Recepti";
+}
+
+<div class="card">
+    <h2>Recepti</h2>
+    <p>Ovde su pretraga, filtriranje i sortiranje liste recepata.</p>
+
+    @using (Html.BeginForm("Index", "Recept", FormMethod.Get))
+    {
+        <div style="display:grid;grid-template-columns:2fr 1fr 1fr auto;gap:12px;align-items:end;">
+            <div>
+                <label>Pretraga</label>
+                <input type="text" name="pretraga" value="@Model.Pretraga" placeholder="Naziv ili sastojci" />
+            </div>
+            <div>
+                <label>Kategorija</label>
+                <select name="kategorija">
+                    <option value="">Sve kategorije</option>
+                    @foreach (var kategorija in Model.Kategorije)
+                    {
+                        <option value="@kategorija" @(Model.Kategorija == kategorija ? "selected" : "")>@kategorija</option>
+                    }
+                </select>
+            </div>
+            <div>
+                <label>Sortiranje</label>
+                <select name="sortiranje">
+                    <option value="">Najnovije</option>
+                    <option value="naziv" @(Model.Sortiranje == "naziv" ? "selected" : "")>Po nazivu</option>
+                    <option value="kategorija" @(Model.Sortiranje == "kategorija" ? "selected" : "")>Po kategoriji</option>
+                </select>
+            </div>
+            <div>
+                <button class="btn btn-secondary" type="submit">Primeni</button>
+            </div>
+        </div>
+    }
+
+    <div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap;">
+        <a class="btn btn-primary" href="@Url.Action("Create", "Recept")">Dodaj recept</a>
+    </div>
+</div>
+
+@if (!Model.Recepti.Any())
+{
+    <div class="card">
+        <p>Nema recepata za zadate kriterijume.</p>
+    </div>
+}
+
+@foreach (var r in Model.Recepti)
+{
+    <div class="card">
+        <h3>@r.Naziv</h3>
+        <p><strong>Kategorija:</strong> @r.Kategorija</p>
+        <p><strong>Autor:</strong> @r.Autor</p>
+        <p><strong>Objavljeno:</strong> @r.Objavljenj.ToShortDateString()</p>
+
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <a class="btn btn-primary" href="@Url.Action("Details", "Recept", new { id = r.Id })">Detalji</a>
+            <a class="btn btn-warning" href="@Url.Action("ToggleFavorite", "Recept", new { id = r.Id })">Omiljeno</a>
+            @if (Session["user"] != null && Session["user"].ToString() == r.Autor)
+            {
+                <a class="btn btn-light" href="@Url.Action("Edit", "Recept", new { id = r.Id })">Izmeni</a>
+                <a class="btn btn-danger" href="@Url.Action("Delete", "Recept", new { id = r.Id })">Obrisi</a>
+            }
+        </div>
+    </div>
+}

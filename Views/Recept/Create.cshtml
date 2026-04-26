@@ -1,0 +1,37 @@
+@model Kuvar.Models.Recept
+@{
+    ViewBag.Title = "Dodaj recept";
+}
+
+<div class="card">
+    <h2>Dodaj novi recept</h2>
+
+    @using (Html.BeginForm("Create", "Recept", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "validation-summary-errors" })
+
+        @Html.LabelFor(m => m.Naziv)
+        @Html.TextBoxFor(m => m.Naziv)
+        @Html.ValidationMessageFor(m => m.Naziv)
+
+        @Html.LabelFor(m => m.Kategorija)
+        @Html.TextBoxFor(m => m.Kategorija)
+        @Html.ValidationMessageFor(m => m.Kategorija)
+
+        @Html.LabelFor(m => m.Sastojci)
+        @Html.TextAreaFor(m => m.Sastojci, new { rows = 6 })
+        @Html.ValidationMessageFor(m => m.Sastojci)
+
+        @Html.LabelFor(m => m.Uputstva)
+        @Html.TextAreaFor(m => m.Uputstva, new { rows = 6 })
+        @Html.ValidationMessageFor(m => m.Uputstva)
+
+        <label for="slikaFajl">Slika sa racunara</label>
+        <input type="file" name="slikaFajl" id="slikaFajl" accept=".jpg,.jpeg,.png,.gif,.webp" />
+
+        <div style="margin-top:18px;">
+            <button class="btn btn-secondary" type="submit">Sacuvaj recept</button>
+        </div>
+    }
+</div>

@@ -1,0 +1,93 @@
+@model Kuvar.Models.AdminReportViewModel
+@{
+    ViewBag.Title = "Admin izvestaj";
+}
+
+<style>
+    .report-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+
+    .report-box {
+        background: rgba(255,255,255,0.92);
+        border-radius: 18px;
+        padding: 18px;
+        box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+    }
+
+    .print-only {
+        display: none;
+    }
+
+    @@media print {
+        .topbar, .footer, .btn, .alert-success {
+            display: none !important;
+        }
+
+        .print-only {
+            display: block;
+        }
+
+        body {
+            background: white;
+        }
+
+        .card, .report-box {
+            box-shadow: none;
+            border: 1px solid #ddd;
+        }
+    }
+</style>
+
+<div class="card">
+    <div style="display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;">
+        <div>
+            <h2>Admin izvestaj</h2>
+            <p>Stranica za stampanje pregleda korisnika, recepata i kategorija.</p>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <button class="btn btn-secondary" onclick="window.print()">Stampaj izvestaj</button>
+            <a class="btn btn-light" href="@Url.Action("Panel", "Admin")">Nazad na panel</a>
+        </div>
+    </div>
+</div>
+
+<div class="print-only">
+    <h1>Kuvar admin izvestaj</h1>
+    <p>Datum stampe: @DateTime.Now.ToString("dd.MM.yyyy HH:mm")</p>
+</div>
+
+<div class="report-grid">
+    <div class="report-box">
+        <h3>Osnovna statistika</h3>
+        <p><strong>Broj korisnika:</strong> @Model.BrojKorisnika</p>
+        <p><strong>Broj recepata:</strong> @Model.BrojRecepata</p>
+    </div>
+
+    <div class="report-box">
+        <h3>Recepti po kategoriji</h3>
+        @foreach (var item in Model.Kategorije)
+        {
+            <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #eee;">
+                <span>@item.NazivKategorije</span>
+                <strong>@item.BrojRecepata</strong>
+            </div>
+        }
+    </div>
+</div>
+
+<div class="card">
+    <h3>Najnoviji recepti</h3>
+    @foreach (var recept in Model.NajnovijiRecepti)
+    {
+        <div style="display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid #eee;">
+            <div>
+                <strong>@recept.Naziv</strong><br />
+                <span>@recept.Kategorija | autor: @recept.Autor</span>
+            </div>
+            <div>@recept.Objavljenj.ToShortDateString()</div>
+        </div>
+    }
+</div>

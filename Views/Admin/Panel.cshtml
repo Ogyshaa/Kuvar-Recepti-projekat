@@ -1,0 +1,52 @@
+@model Kuvar.Models.AdminDashboardViewModel
+@{
+    ViewBag.Title = "Admin panel";
+}
+
+<div class="card">
+    <h2>Admin panel</h2>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;">
+        <a class="btn btn-primary" href="@Url.Action("Report", "Admin")">Izvestaj za stampu</a>
+        <a class="btn btn-secondary" href="@Url.Action("ExportXml", "Recept")">Preuzmi XML</a>
+    </div>
+</div>
+
+<div class="card">
+    <h3>Svi korisnici</h3>
+    @foreach (var korisnik in Model.Korisnici)
+    {
+        <div style="display:flex;justify-content:space-between;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid #eee;">
+            <div>
+                <strong>@korisnik.KorIme</strong><br />
+                <span>@korisnik.Email</span>
+            </div>
+            <div>
+                @if (!korisnik.KorIme.Equals("admin", System.StringComparison.OrdinalIgnoreCase))
+                {
+                    <a class="btn btn-danger" href="@Url.Action("DeleteUser", "Admin", new { id = korisnik.Id })" onclick="return confirm('Obrisi korisnika i sve njegove recepte?');">Obrisi korisnika</a>
+                }
+                else
+                {
+                    <span class="btn btn-light" style="pointer-events:none;">Glavni admin</span>
+                }
+            </div>
+        </div>
+    }
+</div>
+
+<div class="card">
+    <h3>Svi recepti</h3>
+    @foreach (var recept in Model.Recepti)
+    {
+        <div style="display:flex;justify-content:space-between;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid #eee;">
+            <div>
+                <strong>@recept.Naziv</strong><br />
+                <span>@recept.Kategorija | autor: @recept.Autor</span>
+            </div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;">
+                <a class="btn btn-primary" href="@Url.Action("Details", "Recept", new { id = recept.Id })">Detalji</a>
+                <a class="btn btn-danger" href="@Url.Action("DeleteRecipe", "Admin", new { id = recept.Id })" onclick="return confirm('Obrisi ovaj recept?');">Obrisi recept</a>
+            </div>
+        </div>
+    }
+</div>

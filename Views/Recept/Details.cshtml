@@ -1,0 +1,30 @@
+@model Kuvar.Models.Recept
+@{
+    ViewBag.Title = Model.Naziv;
+}
+
+<div class="card">
+    <h2>@Model.Naziv</h2>
+    <p><strong>Kategorija:</strong> @Model.Kategorija</p>
+    <p><strong>Autor:</strong> @Model.Autor</p>
+    <p><strong>Objavljeno:</strong> @Model.Objavljenj.ToShortDateString()</p>
+
+    <h4>Sastojci</h4>
+    <p style="white-space:pre-line;">@Model.Sastojci</p>
+
+    <h4>Priprema</h4>
+    <p style="white-space:pre-line;">@Model.Uputstva</p>
+
+    @if (!string.IsNullOrWhiteSpace(Model.Slika))
+    {
+        <img src="@Model.Slika" alt="@Model.Naziv" style="max-width:320px;border-radius:18px;" />
+    }
+
+    <div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap;">
+        <a class="btn btn-light" href="@Url.Action("Index", "Recept")">Nazad</a>
+        @if (Session["user"] != null && Session["user"].ToString() == Model.Autor)
+        {
+            <a class="btn btn-primary" href="@Url.Action("Edit", "Recept", new { id = Model.Id })">Izmeni</a>
+        }
+    </div>
+</div>
