@@ -29,15 +29,6 @@ U projektu su uradjene sledece dodatne funkcionalnosti:
 - stampanje izvestaja za admin korisnika
 - upload slike sa racunara
 
-## Tehnologije
-
-- ASP.NET MVC 5
-- C#
-- Razor Views
-- XML (`System.Xml.Linq`)
-- jQuery Validation
-- Bootstrap
-
 ## Struktura projekta
 
 - `Controllers` - obrada korisnickih zahteva
