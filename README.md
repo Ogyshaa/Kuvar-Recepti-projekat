@@ -1,2 +1,0 @@
-# Kuvar-Recepti-projekat
-Projekat 
