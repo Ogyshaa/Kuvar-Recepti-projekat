@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Recepti>
+  <Recept>
+    <Id>1</Id>
+    <Naziv>Palacinke</Naziv>
+    <Kategorija>Desert</Kategorija>
+    <Sastojci>Brasno, jaja, mleko, secer</Sastojci>
+    <Uputstva>Izmesaj sastojke i peci na tiganju.</Uputstva>
+    <Slika>/Content/Uploads/0f03b6b62f3e430fb5a8fafbd651895f.jpg</Slika>
+    <Autor>milan</Autor>
+    <Objavljenj>2026-04-26 09:10:00</Objavljenj>
+    <Omiljeno>
+      <Korisnik>admin</Korisnik>
+      <Korisnik>vov</Korisnik>
+      <Korisnik>Vesna_CipelajojTesna</Korisnik>
+      <Korisnik>Branka</Korisnik>
+    </Omiljeno>
+  </Recept>
+  <Recept>
+    <Id>2</Id>
+    <Naziv>Spaghetti Carbonara</Naziv>
+    <Kategorija>Rucak</Kategorija>
+    <Sastojci>Testenina, jaja, panceta, parmezan</Sastojci>
+    <Uputstva>Skuvaj testeninu i pomesaj sa sosom.</Uputstva>
+    <Slika>/Content/Uploads/4adb57713e7a4f24a184f10de39912d6.jpg</Slika>
+    <Autor>admin</Autor>
+    <Objavljenj>2026-04-26 10:25:00</Objavljenj>
+    <Omiljeno>
+      <Korisnik>vov</Korisnik>
+    </Omiljeno>
+  </Recept>
+  <Recept>
+    <Id>3</Id>
+    <Naziv>Šnenokle</Naziv>
+    <Kategorija>Desert</Kategorija>
+    <Sastojci>Belance, Žumance, Mleko, Šećer</Sastojci>
+    <Uputstva>Umuti belanca u čvrst sneg potom ih skuvaj u melku
+Žumance i šećer umuti zajedno
+Izvaditi skuvana belanca i politi ih sa prelivom od žumanaca </Uputstva>
+    <Slika>/Content/Uploads/a6d85c2490e64fe0aeee56f747f7e7d5.jpg</Slika>
+    <Autor>vov</Autor>
+    <Objavljenj>2026-04-26 11:40:00</Objavljenj>
+    <Omiljeno>
+      <Korisnik>Vesna_CipelajojTesna</Korisnik>
+      <Korisnik>Branka</Korisnik>
+    </Omiljeno>
+  </Recept>
+  <Recept>
+    <Id>4</Id>
+    <Naziv>Omlet</Naziv>
+    <Kategorija>Doručak</Kategorija>
+    <Sastojci>Valjda znaš šta ide u omlet, ne pitaj glupa pitanja 😭😭😭</Sastojci>
+    <Uputstva>Izlupaj karton jaja, meti u tiganja bum tras tada! Jedi!</Uputstva>
+    <Slika>/Content/Uploads/3afada0065344182a1a20f3b2211db95.jpg</Slika>
+    <Autor>Vesna_CipelajojTesna</Autor>
+    <Objavljenj>2026-04-26 13:05:00</Objavljenj>
+    <Omiljeno />
+  </Recept>
+  <Recept>
+    <Id>5</Id>
+    <Naziv>Kafidžonka</Naziv>
+    <Kategorija>Doručak</Kategorija>
+    <Sastojci>Džezva, 200g bonito kafe, bokal vode, volja za životom, marbolo crveni kratki</Sastojci>
+    <Uputstva>Na kavici sa... Sa kapučinom.</Uputstva>
+    <Slika>/Content/Uploads/ced28a087d2b4eb894779529fd95c853.jpg</Slika>
+    <Autor>Vesna_CipelajojTesna</Autor>
+    <Objavljenj>2026-04-26 14:35:00</Objavljenj>
+    <Omiljeno>
+      <Korisnik>admin</Korisnik>
+      <Korisnik>Branka</Korisnik>
+    </Omiljeno>
+  </Recept>
+  <Recept>
+    <Id>6</Id>
+    <Naziv>Večera po seljački</Naziv>
+    <Kategorija>Večera</Kategorija>
+    <Sastojci>krompir
+luk
+kisela pavlaka
+pečenica 
+kobasica
+kulen
+slanina
+čvarci</Sastojci>
+    <Uputstva>Dobro veče moj dragi fejsbukovci😘,
+
+ Danas sam odlučila da vam podelim ovaj divan recept za brzi snek. 
+Nadam se da će te prste polizati🍽️🫰😍.
+
+S ljubavlju,
+Brankica Cvetković 🥰</Uputstva>
+    <Slika>/Content/Uploads/e796c3a9270a4808bd693b99016077e4.jpg</Slika>
+    <Autor>Branka</Autor>
+    <Objavljenj>2026-04-26 16:20:00</Objavljenj>
+    <Omiljeno />
+  </Recept>
+</Recepti>

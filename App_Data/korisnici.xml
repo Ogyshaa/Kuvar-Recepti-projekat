@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Korisnici>
+  <Korisnik>
+    <Id>1</Id>
+    <KorIme>milan</KorIme>
+    <DatumRodjenja>2004-02-14</DatumRodjenja>
+    <Email>milan@example.com</Email>
+    <Lozinka>123</Lozinka>
+  </Korisnik>
+  <Korisnik>
+    <Id>2</Id>
+    <KorIme>admin</KorIme>
+    <DatumRodjenja>2000-09-20</DatumRodjenja>
+    <Email>admin@example.com</Email>
+    <Lozinka>admin</Lozinka>
+  </Korisnik>
+  <Korisnik>
+    <Id>3</Id>
+    <KorIme>vov</KorIme>
+    <DatumRodjenja>2008-04-26</DatumRodjenja>
+    <Email>vov@gmail.com</Email>
+    <Lozinka>123456789</Lozinka>
+  </Korisnik>
+  <Korisnik>
+    <Id>4</Id>
+    <KorIme>Vesna_CipelajojTesna</KorIme>
+    <DatumRodjenja>1974-04-10</DatumRodjenja>
+    <Email>vesnaicaaaa@gmail.com</Email>
+    <Lozinka>vesna123</Lozinka>
+  </Korisnik>
+  <Korisnik>
+    <Id>5</Id>
+    <KorIme>Branka</KorIme>
+    <DatumRodjenja>1957-11-20</DatumRodjenja>
+    <Email>brankafacebook@gmail.com</Email>
+    <Lozinka>fejsbukovci</Lozinka>
+  </Korisnik>
+</Korisnici>
